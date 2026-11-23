@@ -1,0 +1,25 @@
+@model InventoryApp.Models.Product
+
+<h2>Add Product</h2>
+
+@using (Html.BeginForm())
+{
+    <p>Product Name:</p>
+    @Html.TextBoxFor(m => m.ProductName,
+        new { required = "required" })
+
+    <p>Quantity:</p>
+    @Html.TextBoxFor(m => m.Quantity,
+        new { type = "number", min = "0", required = "required" })
+
+    <p>Price:</p>
+    @Html.TextBoxFor(m => m.Price,
+        new { type = "number", min = "0", step = "0.01",
+              required = "required" })
+
+    <br /><br />
+    <button type="submit">Save Product</button>
+}
+
+<br />
+<a href="@Url.Action("Index")">Back</a>
