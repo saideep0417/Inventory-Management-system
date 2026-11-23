@@ -1,0 +1,32 @@
+@model IEnumerable<InventoryApp.Models.Product>
+
+<h2>Inventory Management System</h2>
+
+<a href="@Url.Action("Create")">Add New Product</a>
+
+<br /><br />
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var p in Model)
+    {
+        <tr>
+            <td>@p.ProductId</td>
+            <td>@p.ProductName</td>
+            <td>@p.Quantity</td>
+            <td>@p.Price</td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = p.ProductId })">Edit</a> |
+                <a href="@Url.Action("Delete", new { id = p.ProductId })"
+                   onclick="return confirm('Delete this product?')">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
